@@ -26,10 +26,27 @@
         
         <?php foreach(get_recipes($recipes, $limit) as $recipe) : ?>
             <article>
-                <h3><?php echo($recipe['title']); ?></h3>
+                <h3><a href="./recipes/read.php?id=<?php echo($recipe['recipe_id']); ?>"><?php echo($recipe['title']); ?></a></h3>
                 <div><?php echo($recipe['recipe']); ?></div>
-                <!-- <i><?php //echo(display_author('' . $recipe['author'] . '', $users)); ?></i> -->
+                <!-- <i><?php // echo(display_author($recipe['author'], $users)); ?></i> -->
+                <br/>
+                <?php if(isset($loggedUser) && $recipe['author'] === $loggedUser['email']): ?>
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-warning ">
+                        <a href="recipes/update.php?id=<?php echo($recipe['recipe_id']); ?>">Editer l'article</a>
+                    </label>
+                    <label class="btn btn-danger">
+                        <a href="recipes/delete.php?id=<?php echo($recipe['recipe_id']); ?>">Supprimer l'article</a>
+                    </label>
+                </div>
+
+                <br/>
+
+                <?php endif; ?>
             </article>
+
+            <br/>
+            
         <?php endforeach ?>
     </div>
    
