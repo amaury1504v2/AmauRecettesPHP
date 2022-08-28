@@ -12,4 +12,14 @@
     } else {
         $limit = 100; // sinon, on la met manuellement à 100
     }
+
+    // Si le cookie est présent
+    if (isset($_COOKIE['LOGGED_USER']) || isset($_SESSION['LOGGED_USER'])) {
+        $loggedUser = [
+            'email' => $_COOKIE['LOGGED_USER'] ?? $_SESSION['LOGGED_USER'],
+        ];
+    }
+
+    $rootPath = $_SERVER['DOCUMENT_ROOT'];
+    $rootUrl = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . '/recettes_php/'; // affiche : http://localhost/recettes_php/
 ?>
