@@ -19,6 +19,9 @@
                     <a class="nav-link" href="<?php echo $rootUrl . "recipes/create.php"; ?>">Ajouter une recette</a>
                 </li>
             </ul>
+            <ul class="navbar-nav navbar-right">
+                <button type="button" class="btn btn-danger"><a class="text-decoration-none" href="<?php echo $rootUrl . "logout.php"; ?>">Déconnexion</a></button>
+            </ul>
         </div>
     </div>
 </nav>
